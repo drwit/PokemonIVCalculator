@@ -147,7 +147,7 @@ class IVCalcWin(QtGui.QWidget):
         label4 = QtGui.QLineEdit('0')
         label5 = QtGui.QLineEdit('0')
         label6 = QtGui.QLineEdit('0')
-        EXReg = QtGui.QIntValidator(0,31,self)
+        EXReg = QtGui.QIntValidator(0,252,self)
         label1.setValidator(EXReg)
         label2.setValidator(EXReg)
         label3.setValidator(EXReg)
@@ -179,7 +179,7 @@ class IVCalcWin(QtGui.QWidget):
         label4 = QtGui.QLineEdit('0')
         label5 = QtGui.QLineEdit('0')
         label6 = QtGui.QLineEdit('0')
-        ACReg = QtGui.QIntValidator(0,252,self)
+        ACReg = QtGui.QIntValidator(0,1000,self)
         label1.setValidator(ACReg)
         label2.setValidator(ACReg)
         label3.setValidator(ACReg)
@@ -283,15 +283,19 @@ class IVCalcWin(QtGui.QWidget):
         self.statsList[6].setText(str(self.currentPokemon.StatsValues.Speed))
         
     def catchNatureChanged(self, QString):
-        self.currentPokemon.nature = QString
+        self.currentPokemon.nature = str(QString)
         print self.currentPokemon.nature
 
     
     def catchLineEditTextchanged(self, QString):
-        if re.compile(r'[0]*').match(QString):
-            self.currentPokemon.level = 50
-        else:
-            self.currentPokemon.level = int(QString)
+        #if re.match(r'[0]*',str(QString)) is not None:
+        #    self.currentPokemon.level = 50
+        #else:
+        if int(QString) == 0 or QString == '':
+            self.currentPokemon.level
+            return
+        
+        self.currentPokemon.level = int(QString)
         print self.currentPokemon.level
 
     #-----下部组件信号与槽
@@ -321,17 +325,17 @@ class IVCalcWin(QtGui.QWidget):
         self.currentPokemon.calcActualValues()
 
         if Attribute == 'HP':
-            self.IVList[1].setText(str(self.currentPokemon.IndividualValues.HP))
+            self.IVList[1].setText(str(int(self.currentPokemon.IndividualValues.HP)))
         elif Attribute == 'Att':
-            self.IVList[2].setText(str(self.currentPokemon.IndividualValues.Att))
+            self.IVList[2].setText(str(int(self.currentPokemon.IndividualValues.Att)))
         elif Attribute == 'Def':
-            self.IVList[3].setText(str(self.currentPokemon.IndividualValues.Def))
+            self.IVList[3].setText(str(int(self.currentPokemon.IndividualValues.Def)))
         elif Attribute == 'SpAtt':
-            self.IVList[4].setText(str(self.currentPokemon.IndividualValues.SpAtt))
+            self.IVList[4].setText(str(int(self.currentPokemon.IndividualValues.SpAtt)))
         elif Attribute == 'SpDef':
-            self.IVList[5].setText(str(self.currentPokemon.IndividualValues.SpDef))
+            self.IVList[5].setText(str(int(self.currentPokemon.IndividualValues.SpDef)))
         elif Attribute == 'Speed':
-            self.IVList[6].setText(str(self.currentPokemon.IndividualValues.Speed))
+            self.IVList[6].setText(str(int(self.currentPokemon.IndividualValues.Speed)))
         #test
         print self.currentPokemon.EffortValues
 
@@ -354,17 +358,17 @@ class IVCalcWin(QtGui.QWidget):
         self.currentPokemon.calcActualValues()
 
         if Attribute == 'HP':
-            self.IVList[1].setText(str(self.currentPokemon.IndividualValues.HP))
+            self.IVList[1].setText(str(int(self.currentPokemon.IndividualValues.HP)))
         elif Attribute == 'Att':
-            self.IVList[2].setText(str(self.currentPokemon.IndividualValues.Att))
+            self.IVList[2].setText(str(int(self.currentPokemon.IndividualValues.Att)))
         elif Attribute == 'Def':
-            self.IVList[3].setText(str(self.currentPokemon.IndividualValues.Def))
+            self.IVList[3].setText(str(int(self.currentPokemon.IndividualValues.Def)))
         elif Attribute == 'SpAtt':
-            self.IVList[4].setText(str(self.currentPokemon.IndividualValues.SpAtt))
+            self.IVList[4].setText(str(int(self.currentPokemon.IndividualValues.SpAtt)))
         elif Attribute == 'SpDef':
-            self.IVList[5].setText(str(self.currentPokemon.IndividualValues.SpDef))
+            self.IVList[5].setText(str(int(self.currentPokemon.IndividualValues.SpDef)))
         elif Attribute == 'Speed':
-            self.IVList[6].setText(str(self.currentPokemon.IndividualValues.Speed))
+            self.IVList[6].setText(str(int(self.currentPokemon.IndividualValues.Speed)))
     
         #test
         print self.currentPokemon.ActualValues

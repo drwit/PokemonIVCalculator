@@ -22,6 +22,8 @@ def main():
     Pokedex['014'] = ['Kakuna', 45, 25, 50, 25, 25, 35]
     Pokedex['015'] = ['Beedrill', 65, 90, 40, 45, 80, 75]
 
+    Pokedex['135'] = ['Jolteon', 65, 65, 60, 110, 95, 130]
+
     print Pokedex
     fileobj = open('./data/Pokedex.pkl','wb')
     pickle.dump(Pokedex, fileobj)

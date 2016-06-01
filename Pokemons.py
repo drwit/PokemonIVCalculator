@@ -187,21 +187,12 @@ class Pokemon(object):
         self.IndividualValues.HP = (self.ActualValues.HP - self.level - 10)*100/self.level -\
                                     self.EffortValues.HP/4 - self.StatsValues.HP*2
 
-        self.IndividualValues.Att = (self.ActualValues.Att/NatureModify[self.nature][0] - 5 )*\
-                                     100 / self.level - self.EffortValues.Att/4 -\
-                                     self.StatsValues.Att*2
-        self.IndividualValues.Def = (self.ActualValues.Def/NatureModify[self.nature][0] - 5 )*\
-                                     100 / self.level - self.EffortValues.Def/4 -\
-                                     self.StatsValues.Def*2
-        self.IndividualValues.SpAtt = (self.ActualValues.SpAtt/NatureModify[self.nature][0] - 5 )*\
-                                     100 / self.level - self.EffortValues.SpAtt/4 -\
-                                     self.StatsValues.SpAtt*2
-        self.IndividualValues.SpDef = (self.ActualValues.SpDef/NatureModify[self.nature][0] - 5 )*\
-                                     100 / self.level - self.EffortValues.SpDef/4 -\
-                                     self.StatsValues.SpDef*2
-        self.IndividualValues.Speed = (self.ActualValues.Speed/NatureModify[self.nature][0] - 5 )*\
-                                     100 / self.level - self.EffortValues.Speed/4 -\
-                                     self.StatsValues.Speed*2                                     
+        print NatureModify[self.nature][4]        
+        self.IndividualValues.Att = (self.ActualValues.Att/NatureModify[self.nature][0] - 5 )*100 / self.level - self.EffortValues.Att/4 - self.StatsValues.Att*2
+        self.IndividualValues.Def = (self.ActualValues.Def/NatureModify[self.nature][1] - 5 )*100 / self.level - self.EffortValues.Def/4 - self.StatsValues.Def*2
+        self.IndividualValues.SpAtt = (self.ActualValues.SpAtt/NatureModify[self.nature][2] - 5 )*100 / self.level - self.EffortValues.SpAtt/4 - self.StatsValues.SpAtt*2
+        self.IndividualValues.SpDef = (self.ActualValues.SpDef/NatureModify[self.nature][3] - 5 )*100 / self.level - self.EffortValues.SpDef/4 - self.StatsValues.SpDef*2
+        self.IndividualValues.Speed = (self.ActualValues.Speed/NatureModify[self.nature][4] - 5 )*100 / self.level - self.EffortValues.Speed/4 - self.StatsValues.Speed*2                                     
         
               
 class PokemonAbilities(object):
